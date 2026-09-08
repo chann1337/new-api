@@ -5981,6 +5981,14 @@
     "Zero retention": "Không lưu dữ liệu",
     "Zhipu": "Zhipu",
     "Zhipu V4": "Zhipu V4",
-    "Zoom": "Zoom"
+    "Zoom": "Zoom",
+    "Claude Code Only": "Claude Code Only",
+    "Restrict Claude channels to the official Claude Code client; other clients are rejected": "Restrict Claude channels to the official Claude Code client; other clients are rejected",
+    "Claude Code Minimum Version": "Claude Code Minimum Version",
+    "Claude Code Maximum Version": "Claude Code Maximum Version",
+    "e.g. 2.1.0, empty means no limit": "e.g. 2.1.0, empty means no limit",
+    "e.g. 2.9.9, empty means no limit": "e.g. 2.9.9, empty means no limit",
+    "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.",
+    "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled."
   }
 }

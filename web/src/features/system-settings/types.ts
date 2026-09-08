@@ -343,6 +343,9 @@ export type OperationsSettings = {
   DefaultCollapseSidebar: boolean
   DemoSiteEnabled: boolean
   SelfUseModeEnabled: boolean
+  ClaudeCodeOnly: boolean
+  ClaudeCodeMinVersion: string
+  ClaudeCodeMaxVersion: string
   QuotaRemindThreshold: string
   SMTPServer: string
   SMTPPort: string

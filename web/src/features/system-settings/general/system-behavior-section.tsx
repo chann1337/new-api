@@ -26,8 +26,10 @@ import {
   FormControl,
   FormDescription,
   FormField,
+  FormItem,
   FormLabel,
 } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
 import { Switch } from '@/components/ui/switch'
 
 import {
@@ -44,6 +46,9 @@ const behaviorSchema = z.object({
   DefaultCollapseSidebar: z.boolean(),
   DemoSiteEnabled: z.boolean(),
   SelfUseModeEnabled: z.boolean(),
+  ClaudeCodeOnly: z.boolean(),
+  ClaudeCodeMinVersion: z.string(),
+  ClaudeCodeMaxVersion: z.string(),
 })
 
 type BehaviorFormValues = z.infer<typeof behaviorSchema>
@@ -143,6 +148,71 @@ export function SystemBehaviorSection({
                   />
                 </FormControl>
               </SettingsSwitchItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='ClaudeCodeOnly'
+            render={({ field }) => (
+              <SettingsSwitchItem>
+                <SettingsSwitchContent>
+                  <FormLabel>{t('Claude Code Only')}</FormLabel>
+                  <FormDescription>
+                    {t(
+                      'Restrict Claude channels to the official Claude Code client; other clients are rejected'
+                    )}
+                  </FormDescription>
+                </SettingsSwitchContent>
+                <FormControl>
+                  <Switch
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </SettingsSwitchItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='ClaudeCodeMinVersion'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('Claude Code Minimum Version')}</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder={t('e.g. 2.1.0, empty means no limit')}
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>
+                  {t(
+                    'Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.'
+                  )}
+                </FormDescription>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name='ClaudeCodeMaxVersion'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t('Claude Code Maximum Version')}</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder={t('e.g. 2.9.9, empty means no limit')}
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription>
+                  {t(
+                    'Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.'
+                  )}
+                </FormDescription>
+              </FormItem>
             )}
           />
         </SettingsForm>

@@ -1,6 +1,7 @@
 package relay
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -9,6 +10,7 @@ import (
 	"github.com/QuantumNous/new-api/common"
 	"github.com/QuantumNous/new-api/constant"
 	"github.com/QuantumNous/new-api/logger"
+	claudechannel "github.com/QuantumNous/new-api/relay/channel/claude"
 	relaycommon "github.com/QuantumNous/new-api/relay/common"
 	"github.com/QuantumNous/new-api/relay/helper"
 	"github.com/QuantumNous/new-api/relaykit/dto"
@@ -40,6 +42,28 @@ func ClaudeHelper(c *gin.Context, info *relaycommon.RelayInfo) (newAPIError *typ
 	}
 	if err := helper.ApplyReasoningModelSuffix(c, info, request); err != nil {
 		return newConvertRequestFailedError(c, info, err)
+	}
+
+	// "Claude Code only" restriction: reject clients that are not the official
+	// Claude Code CLI (or whose version is outside the configured range) before
+	// the request reaches the upstream.
+	if claudechannel.ClaudeCodeRestrictEnabled() {
+		var systemTexts []string
+		if request.IsStringSystem() {
+			if system := request.GetStringSystem(); system != "" {
+				systemTexts = append(systemTexts, system)
+			}
+		} else {
+			for _, systemContent := range request.ParseSystem() {
+				if text := systemContent.GetText(); text != "" {
+					systemTexts = append(systemTexts, text)
+				}
+			}
+		}
+		isCountTokens := strings.HasSuffix(c.Request.URL.Path, "/count_tokens")
+		if ok, message := claudechannel.CheckClaudeCodeAccess(c.Request.Header.Get("User-Agent"), systemTexts, isCountTokens); !ok {
+			return types.NewErrorWithStatusCode(errors.New(message), types.ErrorCodeAccessDenied, http.StatusForbidden, types.ErrOptionWithSkipRetry())
+		}
 	}
 
 	adaptor := GetAdaptor(info.ApiType)

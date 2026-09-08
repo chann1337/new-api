@@ -5,6 +5,13 @@ import "strings"
 var DemoSiteEnabled = false
 var SelfUseModeEnabled = false
 
+// Claude Code restriction: only requests coming from the official Claude Code
+// CLI are relayed, optionally limited to a semver range. Configured at runtime
+// through the option map.
+var ClaudeCodeOnly = false    // relay only official Claude Code requests
+var ClaudeCodeMinVersion = "" // minimum Claude Code version, "" means no lower bound
+var ClaudeCodeMaxVersion = "" // maximum Claude Code version, "" means no upper bound
+
 var AutomaticDisableKeywords = []string{
 	"Your credit balance is too low",
 	"This organization has been disabled.",

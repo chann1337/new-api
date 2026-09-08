@@ -5981,6 +5981,14 @@
     "Zero retention": "零数据保留",
     "Zhipu": "智谱",
     "Zhipu V4": "智谱 V4",
-    "Zoom": "缩放"
+    "Zoom": "缩放",
+    "Claude Code Only": "仅允许 Claude Code",
+    "Restrict Claude channels to the official Claude Code client; other clients are rejected": "限制 Claude 渠道仅接受官方 Claude Code 客户端，其他客户端将被拒绝",
+    "Claude Code Minimum Version": "Claude Code 最低版本",
+    "Claude Code Maximum Version": "Claude Code 最高版本",
+    "e.g. 2.1.0, empty means no limit": "例如 2.1.0，留空表示不限制",
+    "e.g. 2.9.9, empty means no limit": "例如 2.9.9，留空表示不限制",
+    "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.": "拒绝低于该版本的 Claude Code 客户端，仅在开启「仅允许 Claude Code」时生效。",
+    "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.": "拒绝高于该版本的 Claude Code 客户端，仅在开启「仅允许 Claude Code」时生效。"
   }
 }

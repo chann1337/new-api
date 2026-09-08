@@ -36,6 +36,9 @@ const OPERATIONS_SECTIONS = [
           DefaultCollapseSidebar: settings.DefaultCollapseSidebar,
           DemoSiteEnabled: settings.DemoSiteEnabled,
           SelfUseModeEnabled: settings.SelfUseModeEnabled,
+          ClaudeCodeOnly: settings.ClaudeCodeOnly,
+          ClaudeCodeMinVersion: settings.ClaudeCodeMinVersion,
+          ClaudeCodeMaxVersion: settings.ClaudeCodeMaxVersion,
         }}
       />
     ),
