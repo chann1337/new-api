@@ -31,10 +31,11 @@ type gitHubOAuthResponse struct {
 }
 
 type gitHubUser struct {
-	Id    int64  `json:"id"`    // GitHub numeric ID (permanent, never changes)
-	Login string `json:"login"` // GitHub username (can be changed by user)
-	Name  string `json:"name"`
-	Email string `json:"email"`
+	Id        int64  `json:"id"`    // GitHub numeric ID (permanent, never changes)
+	Login     string `json:"login"` // GitHub username (can be changed by user)
+	Name      string `json:"name"`
+	Email     string `json:"email"`
+	CreatedAt string `json:"created_at"` // GitHub account creation date (RFC3339)
 }
 
 func (p *GitHubProvider) GetName() string {
@@ -147,14 +148,19 @@ func (p *GitHubProvider) GetUserInfo(ctx context.Context, token *OAuthToken) (*O
 	logger.LogDebug(ctx, "[OAuth-GitHub] GetUserInfo success: id=%d, login=%s, name=%s, email=%s",
 		githubUser.Id, githubUser.Login, githubUser.Name, githubUser.Email)
 
+	extra := map[string]any{
+		"legacy_id": githubUser.Login, // Store login for migration from old accounts
+	}
+	if githubUser.CreatedAt != "" {
+		extra["created_at"] = githubUser.CreatedAt
+	}
+
 	return &OAuthUser{
 		ProviderUserID: strconv.FormatInt(githubUser.Id, 10), // Use numeric ID as primary identifier
 		Username:       githubUser.Login,
 		DisplayName:    githubUser.Name,
 		Email:          githubUser.Email,
-		Extra: map[string]any{
-			"legacy_id": githubUser.Login, // Store login for migration from old accounts
-		},
+		Extra:          extra,
 	}, nil
 }
 

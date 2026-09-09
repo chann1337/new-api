@@ -334,6 +334,8 @@ func handleOAuthLogin(c *gin.Context, provider oauth.Provider, oauthUser *oauth.
 			common.ApiErrorI18n(c, i18n.MsgUserRegisterDisabled)
 		case *OAuthEmailAlreadyTakenError:
 			common.ApiErrorI18n(c, i18n.MsgUserEmailAlreadyTaken)
+		case *OAuthAccountTooYoungError:
+			common.ApiErrorMsg(c, "GitHub account must be at least "+strconv.Itoa(common.GitHubMinimumAccountAgeDays)+" days old to register")
 		default:
 			writeSecurityOperationError(c, err)
 		}
@@ -453,6 +455,21 @@ func findOrCreateOAuthUser(c *gin.Context, provider oauth.Provider, oauthUser *o
 		return nil, &OAuthRegistrationDisabledError{}
 	}
 
+	// GitHub account age requirement: block only NEW registrations with too-young accounts
+	if common.GitHubMinimumAccountAgeDays > 0 {
+		if createdStr, ok := oauthUser.Extra["created_at"].(string); ok && createdStr != "" {
+			createdAt, err := time.Parse(time.RFC3339, createdStr)
+			if err == nil {
+				ageDays := int(time.Since(createdAt).Hours() / 24)
+				if ageDays < common.GitHubMinimumAccountAgeDays {
+					common.SysLog(fmt.Sprintf("[OAuth-GitHub] registration blocked: account %s is only %d days old (min %d)",
+						oauthUser.Username, ageDays, common.GitHubMinimumAccountAgeDays))
+					return nil, &OAuthAccountTooYoungError{}
+				}
+			}
+		}
+	}
+
 	// Set up new user
 	user.Username = provider.GetProviderPrefix() + strconv.Itoa(model.GetMaxUserId()+1)
 
@@ -570,6 +587,12 @@ func (e *OAuthEmailAlreadyTakenError) Error() string {
 	return "email is already in use"
 }
 
+type OAuthAccountTooYoungError struct{}
+
+func (e *OAuthAccountTooYoungError) Error() string {
+	return "oauth account is too young"
+}
+
 // handleOAuthError handles OAuth errors and returns translated message
 func handleOAuthError(c *gin.Context, err error) {
 	switch e := err.(type) {
@@ -583,6 +606,8 @@ func handleOAuthError(c *gin.Context, err error) {
 		common.ApiErrorMsg(c, e.Message)
 	case *oauth.TrustLevelError:
 		common.ApiErrorI18n(c, i18n.MsgOAuthTrustLevelLow)
+	case *OAuthAccountTooYoungError:
+		common.ApiErrorMsg(c, "GitHub account must be at least "+strconv.Itoa(common.GitHubMinimumAccountAgeDays)+" days old to register")
 	default:
 		writeSecurityOperationError(c, err)
 	}
