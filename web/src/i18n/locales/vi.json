@@ -426,6 +426,7 @@
     "Announcement displayed to users (supports Markdown & HTML)": "Thông báo hiển thị cho người dùng (hỗ trợ Markdown & HTML)",
     "Announcement updated. Click \"Save Settings\" to apply.": "Đã cập nhật thông báo. Nhấp \"Save Settings\" để áp dụng.",
     "Announcements": "Thông báo",
+    "Announcement": "Thông báo",
     "Announcements saved successfully": "Đã lưu thông báo thành công",
     "Answer": "Trả lời",
     "Answers for common access and billing questions": "Câu trả lời cho các câu hỏi thường gặp về truy cập và thanh toán",
@@ -2304,7 +2305,7 @@
     "footer.columns.related.links.oneApi": "One API",
     "footer.columns.related.title": "Các Dự Án Liên Quan",
     "footer.defaultCopyright": "Bản quyền được bảo lưu.",
-    "footer.new\u0061pi.projectAttributionSuffix": "Bản quyền được bảo lưu. Được thiết kế và phát triển bởi các cộng tác viên dự án.",
+    "footer.newapi.projectAttributionSuffix": "Bản quyền được bảo lưu. Được thiết kế và phát triển bởi các cộng tác viên dự án.",
     "For channels added after May 10, 2025, no need to remove \".\" from model names during deployment": "Đối với các kênh được thêm sau ngày 10 tháng 5 năm 2025, không cần loại bỏ \".\" khỏi tên mô hình trong quá trình triển khai",
     "For private deployments, format: https://fastgpt.run/api/openapi": "Đối với các triển khai riêng tư, định dạng: https://fastgpt.run/api/openapi",
     "For security, existing access tokens cannot be displayed. Regenerate only when you need a new token.": "Vì lý do bảo mật, không thể hiển thị lại token truy cập hiện có. Chỉ tạo lại khi bạn cần token mới.",
@@ -5989,6 +5990,7 @@
     "e.g. 2.1.0, empty means no limit": "e.g. 2.1.0, empty means no limit",
     "e.g. 2.9.9, empty means no limit": "e.g. 2.9.9, empty means no limit",
     "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.",
-    "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled."
+    "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.",
+    "Got it": "Đã hiểu"
   }
 }

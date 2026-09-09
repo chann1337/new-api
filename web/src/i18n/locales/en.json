@@ -426,6 +426,7 @@
     "Announcement displayed to users (supports Markdown & HTML)": "Announcement displayed to users (supports Markdown & HTML)",
     "Announcement updated. Click \"Save Settings\" to apply.": "Announcement updated. Click \"Save Settings\" to apply.",
     "Announcements": "Announcements",
+    "Announcement": "Announcements",
     "Announcements saved successfully": "Announcements saved successfully",
     "Answer": "Answer",
     "Answers for common access and billing questions": "Answers for common access and billing questions",
@@ -2304,7 +2305,7 @@
     "footer.columns.related.links.oneApi": "One API",
     "footer.columns.related.title": "Related Projects",
     "footer.defaultCopyright": "All rights reserved.",
-    "footer.new\u0061pi.projectAttributionSuffix": "All rights reserved. Designed and developed by the project contributors.",
+    "footer.newapi.projectAttributionSuffix": "All rights reserved. Designed and developed by the project contributors.",
     "For channels added after May 10, 2025, no need to remove \".\" from model names during deployment": "For channels added after May 10, 2025, no need to remove \".\" from model names during deployment",
     "For private deployments, format: https://fastgpt.run/api/openapi": "For private deployments, format: https://fastgpt.run/api/openapi",
     "For security, existing access tokens cannot be displayed. Regenerate only when you need a new token.": "For security, existing access tokens cannot be displayed. Regenerate only when you need a new token.",
@@ -5989,6 +5990,7 @@
     "e.g. 2.1.0, empty means no limit": "e.g. 2.1.0, empty means no limit",
     "e.g. 2.9.9, empty means no limit": "e.g. 2.9.9, empty means no limit",
     "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.",
-    "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled."
+    "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.",
+    "Got it": "Got it"
   }
 }

@@ -426,6 +426,7 @@
     "Announcement displayed to users (supports Markdown & HTML)": "Объявление, отображаемое пользователям (поддерживает Markdown и HTML)",
     "Announcement updated. Click \"Save Settings\" to apply.": "Объявление обновлено. Нажмите \"Сохранить настройки\", чтобы применить.",
     "Announcements": "Объявления",
+    "Announcement": "Объявления",
     "Announcements saved successfully": "Объявления успешно сохранены",
     "Answer": "Ответ",
     "Answers for common access and billing questions": "Ответы на частые вопросы о доступе и оплате",
@@ -2304,7 +2305,7 @@
     "footer.columns.related.links.oneApi": "Один API",
     "footer.columns.related.title": "Связанные проекты",
     "footer.defaultCopyright": "Все права защищены.",
-    "footer.new\u0061pi.projectAttributionSuffix": "Все права защищены. Разработано участниками проекта.",
+    "footer.newapi.projectAttributionSuffix": "Все права защищены. Разработано участниками проекта.",
     "For channels added after May 10, 2025, no need to remove \".\" from model names during deployment": "Для каналов, добавленных после 10 мая 2025 г., не нужно удалять \".\" из имён моделей при развёртывании",
     "For private deployments, format: https://fastgpt.run/api/openapi": "Для частных развертываний, формат: https://fastgpt.run/api/openapi",
     "For security, existing access tokens cannot be displayed. Regenerate only when you need a new token.": "В целях безопасности существующие токены доступа нельзя просмотреть повторно. Создавайте новый токен только при необходимости.",
@@ -5989,6 +5990,7 @@
     "e.g. 2.1.0, empty means no limit": "e.g. 2.1.0, empty means no limit",
     "e.g. 2.9.9, empty means no limit": "e.g. 2.9.9, empty means no limit",
     "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.",
-    "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled."
+    "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.",
+    "Got it": "Понятно"
   }
 }
