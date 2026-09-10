@@ -23,10 +23,20 @@ import { WorkerSettingsSection } from '../integrations/worker-settings-section'
 import { LogSettingsSection } from '../maintenance/log-settings-section'
 import { PerformanceSection } from '../maintenance/performance-section'
 import { UpdateCheckerSection } from '../maintenance/update-checker-section'
+import { OperatorPromptsSection } from './operator-prompts-section'
 import type { OperationsSettings } from '../types'
 import { createSectionRegistry } from '../utils/section-registry'
 
 const OPERATIONS_SECTIONS = [
+  {
+    id: 'operator-prompts',
+    titleKey: 'Operator System Prompts',
+    build: (settings: OperationsSettings) => (
+      <OperatorPromptsSection
+        defaultPrompts={settings.ModelSystemPrompts ?? '{}'}
+      />
+    ),
+  },
   {
     id: 'behavior',
     titleKey: 'System Behavior',

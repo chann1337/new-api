@@ -18,6 +18,10 @@ type ChannelSettings struct {
 	PassThroughBodyEnabled bool   `json:"pass_through_body_enabled,omitempty"`
 	SystemPrompt           string `json:"system_prompt,omitempty"`
 	SystemPromptOverride   bool   `json:"system_prompt_override,omitempty"`
+	// OperatorSystemPrompt is an operator-grade system prompt. Unlike
+	// SystemPrompt it is always injected as the first (highest priority)
+	// system instruction, even when the client sends its own system prompt.
+	OperatorSystemPrompt string `json:"operator_system_prompt,omitempty"`
 	// HTTPProtocol controls outbound HTTP version negotiation for this channel.
 	// Accepted values: "", "auto" (default), "http1".
 	HTTPProtocol string `json:"http_protocol,omitempty"`

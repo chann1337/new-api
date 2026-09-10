@@ -33,6 +33,7 @@ const defaultOperationsSettings: OperationsSettings = {
   ClaudeCodeOnly: false,
   ClaudeCodeMinVersion: '',
   ClaudeCodeMaxVersion: '',
+  ModelSystemPrompts: '{}',
   QuotaRemindThreshold: '',
   SMTPServer: '',
   SMTPPort: '',

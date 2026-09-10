@@ -97,6 +97,18 @@ func ClaudeHelper(c *gin.Context, info *relaycommon.RelayInfo) (newAPIError *typ
 		}
 	}
 
+	if framed := service.BuildOperatorPrompt(info.ChannelSetting.OperatorSystemPrompt, info.OriginModelName); framed != "" {
+		if request.System == nil {
+			request.SetStringSystem(framed)
+		} else if request.IsStringSystem() {
+			request.SetStringSystem(framed + "\n" + strings.TrimSpace(request.GetStringSystem()))
+		} else {
+			operatorSystem := dto.ClaudeMediaMessage{Type: dto.ContentTypeText}
+			operatorSystem.SetText(framed)
+			request.System = append([]dto.ClaudeMediaMessage{operatorSystem}, request.ParseSystem()...)
+		}
+	}
+
 	if !model_setting.GetGlobalSettings().PassThroughRequestEnabled &&
 		!info.ChannelSetting.PassThroughBodyEnabled &&
 		service.ShouldChatCompletionsUseResponsesGlobal(info.ChannelId, info.ChannelType, info.OriginModelName) {

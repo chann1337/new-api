@@ -426,6 +426,7 @@
     "Announcement displayed to users (supports Markdown & HTML)": "向用戶顯示的公告（支援 Markdown 和 HTML）",
     "Announcement updated. Click \"Save Settings\" to apply.": "公告已更新。點擊「儲存設定」以套用。",
     "Announcements": "公告",
+    "Announcement": "Announcements",
     "Announcements saved successfully": "公告儲存成功",
     "Answer": "答案",
     "Answers for common access and billing questions": "存取與收費常見問題解答",
@@ -5989,6 +5990,16 @@
     "e.g. 2.1.0, empty means no limit": "e.g. 2.1.0, empty means no limit",
     "e.g. 2.9.9, empty means no limit": "e.g. 2.9.9, empty means no limit",
     "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.",
-    "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled."
+    "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.",
+    "Got it": "Got it",
+    "Operator System Prompt": "Operator System Prompt",
+    "Enter operator system prompt": "Enter operator system prompt",
+    "Operator-grade system prompt: always injected as the highest priority instruction, even when the client sends its own system prompt": "Operator-grade system prompt: always injected as the highest priority instruction, even when the client sends its own system prompt",
+    "Operator System Prompts": "Operator System Prompts",
+    "Operator prompts are always injected as the highest priority system instruction for the selected model, even when the client sends its own system prompt. Use * as the model name to apply a prompt to all models.": "Operator prompts are always injected as the highest priority system instruction for the selected model, even when the client sends its own system prompt. Use * as the model name to apply a prompt to all models.",
+    "Model name or *": "Model name or *",
+    "System prompt for this model": "System prompt for this model",
+    "Remove prompt": "Remove prompt",
+    "Add model prompt": "Add model prompt"
   }
 }

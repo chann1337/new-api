@@ -153,3 +153,39 @@ func TestTextRequestViaResponsesConvertsClaudeDirectly(t *testing.T) {
 	require.Len(t, response.Content, 1)
 	assert.Equal(t, "ok", response.Content[0].GetText())
 }
+
+func TestPrependOperatorPrompt(t *testing.T) {
+	t.Run("operator prompt becomes the first system message", func(t *testing.T) {
+		request := &dto.GeneralOpenAIRequest{
+			Model: "gpt-4o",
+			Messages: []dto.Message{
+				{Role: "user", Content: "hello"},
+			},
+		}
+
+		prependOperatorPrompt(request, "framed operator prompt")
+
+		require.Len(t, request.Messages, 2)
+		assert.Equal(t, request.GetSystemRoleName(), request.Messages[0].Role)
+		assert.Equal(t, "framed operator prompt", request.Messages[0].StringContent())
+		assert.Equal(t, "user", request.Messages[1].Role)
+	})
+
+	t.Run("client system prompt is kept but subordinated", func(t *testing.T) {
+		request := &dto.GeneralOpenAIRequest{
+			Model: "gpt-4o",
+			Messages: []dto.Message{
+				{Role: "system", Content: "client system"},
+				{Role: "user", Content: "hello"},
+			},
+		}
+
+		prependOperatorPrompt(request, "framed operator prompt")
+
+		require.Len(t, request.Messages, 3)
+		assert.Equal(t, request.GetSystemRoleName(), request.Messages[0].Role)
+		assert.Equal(t, "framed operator prompt", request.Messages[0].StringContent())
+		assert.Equal(t, "client system", request.Messages[1].StringContent())
+		assert.Equal(t, "user", request.Messages[2].Role)
+	})
+}

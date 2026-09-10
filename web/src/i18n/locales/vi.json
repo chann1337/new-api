@@ -2305,7 +2305,7 @@
     "footer.columns.related.links.oneApi": "One API",
     "footer.columns.related.title": "Các Dự Án Liên Quan",
     "footer.defaultCopyright": "Bản quyền được bảo lưu.",
-    "footer.newapi.projectAttributionSuffix": "Bản quyền được bảo lưu. Được thiết kế và phát triển bởi các cộng tác viên dự án.",
+    "footer.new\u0061pi.projectAttributionSuffix": "Bản quyền được bảo lưu. Được thiết kế và phát triển bởi các cộng tác viên dự án.",
     "For channels added after May 10, 2025, no need to remove \".\" from model names during deployment": "Đối với các kênh được thêm sau ngày 10 tháng 5 năm 2025, không cần loại bỏ \".\" khỏi tên mô hình trong quá trình triển khai",
     "For private deployments, format: https://fastgpt.run/api/openapi": "Đối với các triển khai riêng tư, định dạng: https://fastgpt.run/api/openapi",
     "For security, existing access tokens cannot be displayed. Regenerate only when you need a new token.": "Vì lý do bảo mật, không thể hiển thị lại token truy cập hiện có. Chỉ tạo lại khi bạn cần token mới.",
@@ -5991,6 +5991,15 @@
     "e.g. 2.9.9, empty means no limit": "e.g. 2.9.9, empty means no limit",
     "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.",
     "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.",
-    "Got it": "Đã hiểu"
+    "Got it": "Đã hiểu",
+    "Operator System Prompt": "Operator System Prompt",
+    "Enter operator system prompt": "Enter operator system prompt",
+    "Operator-grade system prompt: always injected as the highest priority instruction, even when the client sends its own system prompt": "Operator-grade system prompt: always injected as the highest priority instruction, even when the client sends its own system prompt",
+    "Operator System Prompts": "Operator System Prompts",
+    "Operator prompts are always injected as the highest priority system instruction for the selected model, even when the client sends its own system prompt. Use * as the model name to apply a prompt to all models.": "Operator prompts are always injected as the highest priority system instruction for the selected model, even when the client sends its own system prompt. Use * as the model name to apply a prompt to all models.",
+    "Model name or *": "Model name or *",
+    "System prompt for this model": "System prompt for this model",
+    "Remove prompt": "Remove prompt",
+    "Add model prompt": "Add model prompt"
   }
 }

@@ -74,6 +74,15 @@ func GeminiHelper(c *gin.Context, info *relaycommon.RelayInfo) (newAPIError *typ
 		}
 	}
 
+	if framed := service.BuildOperatorPrompt(info.ChannelSetting.OperatorSystemPrompt, info.OriginModelName); framed != "" {
+		operatorPart := dto.GeminiPart{Text: framed}
+		if request.SystemInstructions == nil {
+			request.SystemInstructions = &dto.GeminiChatContent{Parts: []dto.GeminiPart{operatorPart}}
+		} else {
+			request.SystemInstructions.Parts = append([]dto.GeminiPart{operatorPart}, request.SystemInstructions.Parts...)
+		}
+	}
+
 	// Clean up empty system instruction
 	if request.SystemInstructions != nil {
 		hasContent := false

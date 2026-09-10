@@ -285,6 +285,7 @@ const SENSITIVE_FORM_FIELDS = [
   'pass_through_body_enabled',
   'system_prompt',
   'system_prompt_override',
+  'operator_system_prompt',
   'allow_service_tier',
   'disable_store',
   'allow_safety_identifier',
@@ -333,6 +334,7 @@ function hasAdvancedSettingsValues(values: ChannelFormValues): boolean {
     values.weight ||
     values.proxy?.trim() ||
     values.system_prompt?.trim() ||
+    values.operator_system_prompt?.trim() ||
     values.force_format ||
     values.thinking_to_content ||
     values.pass_through_body_enabled ||
@@ -4371,6 +4373,33 @@ placeholder={t(
                                       onCheckedChange={field.onChange}
                                     />
                                   </FormControl>
+                                </FormItem>
+                              )}
+                            />
+
+                            <FormField
+                              control={form.control}
+                              name='operator_system_prompt'
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>
+                                    {t('Operator System Prompt')}
+                                  </FormLabel>
+                                  <FormControl>
+                                    <Textarea
+                                      placeholder={t(
+                                        'Enter operator system prompt'
+                                      )}
+                                      rows={4}
+                                      {...field}
+                                    />
+                                  </FormControl>
+                                  <FormDescription>
+                                    {t(
+                                      'Operator-grade system prompt: always injected as the highest priority instruction, even when the client sends its own system prompt'
+                                    )}
+                                  </FormDescription>
+                                  <FormMessage />
                                 </FormItem>
                               )}
                             />

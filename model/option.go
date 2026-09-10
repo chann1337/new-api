@@ -180,6 +180,7 @@ func InitOptionMap() {
 	common.OptionMap["ClaudeCodeOnly"] = strconv.FormatBool(operation_setting.ClaudeCodeOnly)
 	common.OptionMap["ClaudeCodeMinVersion"] = operation_setting.ClaudeCodeMinVersion
 	common.OptionMap["ClaudeCodeMaxVersion"] = operation_setting.ClaudeCodeMaxVersion
+	common.OptionMap["ModelSystemPrompts"] = operation_setting.ModelSystemPrompts2JSONString()
 	common.OptionMap["ModelRequestRateLimitEnabled"] = strconv.FormatBool(setting.ModelRequestRateLimitEnabled)
 	common.OptionMap["CheckSensitiveOnPromptEnabled"] = strconv.FormatBool(setting.CheckSensitiveOnPromptEnabled)
 	common.OptionMap["StopOnSensitiveEnabled"] = strconv.FormatBool(setting.StopOnSensitiveEnabled)
@@ -426,6 +427,10 @@ func updateOptionMap(key string, value string) (err error) {
 		operation_setting.ClaudeCodeMinVersion = value
 	case "ClaudeCodeMaxVersion":
 		operation_setting.ClaudeCodeMaxVersion = value
+	case "ModelSystemPrompts":
+		if err := operation_setting.UpdateModelSystemPromptsByJSONString(value); err != nil {
+			common.SysError("failed to update ModelSystemPrompts: " + err.Error())
+		}
 	case "EmailDomainWhitelist":
 		common.EmailDomainWhitelist = strings.Split(value, ",")
 	case "SMTPServer":

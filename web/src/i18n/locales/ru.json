@@ -2305,7 +2305,7 @@
     "footer.columns.related.links.oneApi": "Один API",
     "footer.columns.related.title": "Связанные проекты",
     "footer.defaultCopyright": "Все права защищены.",
-    "footer.newapi.projectAttributionSuffix": "Все права защищены. Разработано участниками проекта.",
+    "footer.new\u0061pi.projectAttributionSuffix": "Все права защищены. Разработано участниками проекта.",
     "For channels added after May 10, 2025, no need to remove \".\" from model names during deployment": "Для каналов, добавленных после 10 мая 2025 г., не нужно удалять \".\" из имён моделей при развёртывании",
     "For private deployments, format: https://fastgpt.run/api/openapi": "Для частных развертываний, формат: https://fastgpt.run/api/openapi",
     "For security, existing access tokens cannot be displayed. Regenerate only when you need a new token.": "В целях безопасности существующие токены доступа нельзя просмотреть повторно. Создавайте новый токен только при необходимости.",
@@ -5991,6 +5991,15 @@
     "e.g. 2.9.9, empty means no limit": "e.g. 2.9.9, empty means no limit",
     "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients below this version. Only applies when Claude Code Only is enabled.",
     "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.": "Reject Claude Code clients above this version. Only applies when Claude Code Only is enabled.",
-    "Got it": "Понятно"
+    "Got it": "Понятно",
+    "Operator System Prompt": "Операторский системный промпт",
+    "Enter operator system prompt": "Введите операторский системный промпт",
+    "Operator-grade system prompt: always injected as the highest priority instruction, even when the client sends its own system prompt": "Операторский промпт: всегда добавляется как инструкция высшего приоритета, даже если клиент прислал свой системный промпт",
+    "Operator System Prompts": "Операторские системные промпты",
+    "Operator prompts are always injected as the highest priority system instruction for the selected model, even when the client sends its own system prompt. Use * as the model name to apply a prompt to all models.": "Операторские промпты всегда добавляются как системная инструкция высшего приоритета для выбранной модели, даже если клиент прислал свой системный промпт. Используйте * как имя модели, чтобы применить промпт ко всем моделям.",
+    "Model name or *": "Имя модели или *",
+    "System prompt for this model": "Системный промпт для этой модели",
+    "Remove prompt": "Удалить промпт",
+    "Add model prompt": "Добавить промпт модели"
   }
 }

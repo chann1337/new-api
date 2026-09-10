@@ -79,6 +79,9 @@ func TextHelper(c *gin.Context, info *relaycommon.RelayInfo) (newAPIError *types
 		!info.ChannelSetting.PassThroughBodyEnabled &&
 		service.ShouldChatCompletionsUseResponsesGlobal(info.ChannelId, info.ChannelType, info.OriginModelName) {
 		applySystemPromptIfNeeded(c, info, request)
+		if framed := service.BuildOperatorPrompt(info.ChannelSetting.OperatorSystemPrompt, info.OriginModelName); framed != "" {
+			prependOperatorPrompt(request, framed)
+		}
 		usage, newApiErr := textRequestViaResponses(c, info, adaptor, request)
 		if newApiErr != nil {
 			return newApiErr
@@ -109,6 +112,9 @@ func TextHelper(c *gin.Context, info *relaycommon.RelayInfo) (newAPIError *types
 		}
 		requestBody = common.NewReplayableBodyReader(storage)
 	} else {
+		if framed := service.BuildOperatorPrompt(info.ChannelSetting.OperatorSystemPrompt, info.OriginModelName); framed != "" {
+			prependOperatorPrompt(request, framed)
+		}
 		convertedRequest, err := adaptor.ConvertOpenAIRequest(c, info, request)
 		if err != nil {
 			return newConvertRequestFailedError(c, info, err)
@@ -222,4 +228,14 @@ func TextHelper(c *gin.Context, info *relaycommon.RelayInfo) (newAPIError *types
 		service.PostTextConsumeQuota(c, info, usage.(*dto.Usage), nil)
 	}
 	return nil
+}
+
+// prependOperatorPrompt places the framed operator prompt as the very first
+// system message, so it outranks any system prompt sent by the client.
+func prependOperatorPrompt(request *dto.GeneralOpenAIRequest, framedPrompt string) {
+	operatorMessage := dto.Message{
+		Role:    request.GetSystemRoleName(),
+		Content: framedPrompt,
+	}
+	request.Messages = append([]dto.Message{operatorMessage}, request.Messages...)
 }

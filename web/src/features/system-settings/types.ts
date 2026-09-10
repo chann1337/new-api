@@ -346,6 +346,7 @@ export type OperationsSettings = {
   ClaudeCodeOnly: boolean
   ClaudeCodeMinVersion: string
   ClaudeCodeMaxVersion: string
+  ModelSystemPrompts: string
   QuotaRemindThreshold: string
   SMTPServer: string
   SMTPPort: string

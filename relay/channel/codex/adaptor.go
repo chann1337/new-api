@@ -14,6 +14,7 @@ import (
 	relayconstant "github.com/QuantumNous/new-api/relay/constant"
 	"github.com/QuantumNous/new-api/relaykit/dto"
 	"github.com/QuantumNous/new-api/relaykit/types"
+	"github.com/QuantumNous/new-api/service"
 
 	"github.com/gin-gonic/gin"
 )
@@ -83,6 +84,25 @@ func (a *Adaptor) ConvertOpenAIResponsesRequest(c *gin.Context, info *relaycommo
 				}
 			} else {
 				if b, err := common.Marshal(systemPrompt); err == nil {
+					request.Instructions = b
+				} else {
+					return nil, err
+				}
+			}
+		}
+	}
+
+	if info != nil {
+		if framed := service.BuildOperatorPrompt(info.ChannelSetting.OperatorSystemPrompt, info.OriginModelName); framed != "" {
+			var existing string
+			if len(request.Instructions) > 0 && common.Unmarshal(request.Instructions, &existing) == nil && strings.TrimSpace(existing) != "" {
+				if b, err := common.Marshal(framed + "\n" + strings.TrimSpace(existing)); err == nil {
+					request.Instructions = b
+				} else {
+					return nil, err
+				}
+			} else {
+				if b, err := common.Marshal(framed); err == nil {
 					request.Instructions = b
 				} else {
 					return nil, err
